@@ -18,6 +18,7 @@ public class CategoryResource {
         List<Category> list = new ArrayList<>();
         list.add(new Category(1L, "Books"));
         list.add(new Category(2L, "Eletronics"));
+        list.add(new Category(3L,"Computers"));
         return ResponseEntity.ok().body(list);
 
     }
