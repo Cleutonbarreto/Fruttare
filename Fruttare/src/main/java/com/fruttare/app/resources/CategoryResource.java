@@ -1,6 +1,6 @@
 package com.fruttare.app.resources;
 
-import com.fruttare.app.entities.Category;
+import com.fruttare.app.dto.CategoryDTO;
 import com.fruttare.app.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +19,8 @@ public class CategoryResource {
     private CategoryService service;
 
     @GetMapping
-    public ResponseEntity<List<Category>> findAll() {
-        List<Category> list = service.findAll();
+    public ResponseEntity<List<CategoryDTO>> findAll() {
+        List<CategoryDTO> list = service.findAll();
         return ResponseEntity.ok().body(list);
 
     }
