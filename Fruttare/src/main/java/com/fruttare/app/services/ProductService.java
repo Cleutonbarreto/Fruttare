@@ -1,7 +1,10 @@
 package com.fruttare.app.services;
 
+import com.fruttare.app.dto.CategoryDTO;
 import com.fruttare.app.dto.ProductDTO;
+import com.fruttare.app.entities.Category;
 import com.fruttare.app.entities.Product;
+import com.fruttare.app.repositories.CategoryRepository;
 import com.fruttare.app.repositories.ProductRepository;
 import com.fruttare.app.services.exceptions.DatabaseException;
 import com.fruttare.app.services.exceptions.ResourceNotFoundException;
@@ -20,6 +23,9 @@ public class ProductService {
     @Autowired
     private ProductRepository repository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Transactional(readOnly = true)
     public Page<ProductDTO> findAllPaged(PageRequest pageRequest) {
         Page<Product> list = repository.findAll(pageRequest);
@@ -36,6 +42,7 @@ public class ProductService {
     @Transactional
     public ProductDTO insert(ProductDTO dto) {
         Product entity = new Product();
+        copyDtoToEntity(dto,entity);
         //entity.setName(dto.getName());
         entity = repository.save(entity);
         return new ProductDTO(entity);
@@ -45,11 +52,11 @@ public class ProductService {
     public ProductDTO update(Long id, ProductDTO dto) {
         Product entity = repository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Id not found: " + id));
-
-      //  entity.setName(dto.getName());
+        copyDtoToEntity(dto,entity);
         entity = repository.save(entity);
         return new ProductDTO(entity);
     }
+
 
     public void delete(Long id) {
         repository.findById(id)
@@ -57,4 +64,18 @@ public class ProductService {
                     throw new DatabaseException("Entity Not Found By Id " + id);
                 });
     }
+    private void copyDtoToEntity(ProductDTO dto, Product entity) {
+        entity.setName(dto.getName());
+        entity.setDescription(dto.getDescription());
+        entity.setDate(dto.getDate());
+        entity.setImgUrl(dto.getImgUrl());
+        entity.setPrice(dto.getPrice());
+
+        entity.getCategories().clear();
+        for (CategoryDTO catDto : dto.getCategories()) {
+            Category category = categoryRepository.getOne(catDto.getId());
+            entity.getCategories().add(category);
+        }
+    }
+
 }
