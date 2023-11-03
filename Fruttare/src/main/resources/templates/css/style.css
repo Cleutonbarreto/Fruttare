@@ -1,0 +1,62 @@
+/* Estilizando o corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eaeaed; /* Fundo cinza claro */
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilizando o cabeçalho */
+h1 {
+  text-align: center;
+  background-color: #f66b05; /* Laranja */
+  color: #eaeaed; /* Texto branco */
+  padding: 10px;
+}
+
+/* Estilizando o formulário */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #eaeaed; /* Fundo cinza claro */
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilizando as etiquetas de rótulo */
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #c42e0f; /* Vermelho escuro */
+}
+
+/* Estilizando os campos de entrada de texto */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #86832a; /* Amarelo verde-oliva */
+  border-radius: 3px;
+}
+
+/* Estilizando o botão de envio */
+input[type="submit"] {
+  background-color: #f66b05; /* Laranja */
+  color: #eaeaed; /* Texto branco */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+input[type="submit"]:hover {
+  background-color: #c42e0f; /* Vermelho escuro */
+}
+
+/* Estilizando elementos em destaque com a cor verde */
+.highlight {
+  color: #006600; /* Verde das folhas */
+}

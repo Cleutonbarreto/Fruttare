@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Formulario de Clientes</title>
+</head>
+<body>
+<h1 class="highlight">Cadastro de Cliente</h1>
+<form action="/salvar" method="POST">
+    <!-- Campo de ID oculto -->
+    <input type="hidden" id="id" name="id">
+    <label for="name">Nome</label>
+    <input type="text" id="name" name="name">
+    <br>
+
+    <label for="cpf">CPF</label>
+    <input type="text" id="cpf" name="cpf">
+    <br>
+
+    <label for="income">Renda</label>
+    <input type="text" id="income" name="income">
+    <br>
+
+    <label for="birthDate">Aniversário</label>
+    <input type="text" id="birthDate" name="birthDate">
+    <br>
+
+    <label for="children">Quantidade de Filhos</label>
+    <input type="text" id="children" name="children">
+    <br>
+
+    <input type="submit" value="salvar">
+
+</form>
+
+</body>
+</html>
