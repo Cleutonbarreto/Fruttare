@@ -1,3 +1,33 @@
+/* Estilize o menu */
+ul.menu {
+    list-style-type: none;
+    padding: 0;
+    background-color: #eaeaed;
+    display: flex;
+    justify-content: space-between; /* Para alinhar os itens do menu à direita */
+}
+
+ul.menu li {
+    margin-right: 20px;
+}
+
+ul.menu li a {
+    text-decoration: none;
+    color: #c42e0f;
+    padding: 5px 10px; /* Espaçamento interno para os links */
+    border-radius: 5px; /* Borda arredondada para os links */
+}
+
+ul.menu li a:hover {
+    background-color: #555; /* Cor de fundo quando o mouse passa sobre os links */
+}
+
+/* Estilize o logo */
+.logo {
+    display: inline-block;
+    margin: 10px;
+}
+
 /* Estilizando o corpo da página */
 body {
   font-family: Arial, sans-serif;
@@ -9,7 +39,7 @@ body {
 /* Estilizando o cabeçalho */
 h1 {
   text-align: center;
-  background-color: #f66b05; /* Laranja */
+  background-color: #fff; /* Laranja */
   color: #eaeaed; /* Texto branco */
   padding: 10px;
 }

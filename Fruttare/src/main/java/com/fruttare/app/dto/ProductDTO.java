@@ -16,7 +16,7 @@ public class ProductDTO implements Serializable {
     private String name;
     private String description;
     private Double price;
-    private  String imgUrl;
+    private String imgUrl;
     private Instant date;
 
     private List<CategoryDTO> categories = new ArrayList<>();

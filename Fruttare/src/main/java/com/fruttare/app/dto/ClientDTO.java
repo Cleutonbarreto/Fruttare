@@ -1,7 +1,11 @@
 package com.fruttare.app.dto;
 
+import com.fruttare.app.entities.Client;
+
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientDTO implements Serializable {
     private static final long serialVersionID = 1L;
@@ -11,6 +15,8 @@ public class ClientDTO implements Serializable {
     private Double income;
     private Instant birthDate;
     private Integer children;
+
+//    private List<ClientDTO> client = new ArrayList<>();
 
     public ClientDTO(){
     }
@@ -22,6 +28,15 @@ public class ClientDTO implements Serializable {
         this.income = income;
         this.birthDate = birthDate;
         this.children = children;
+    }
+
+    public ClientDTO(Client entity) {
+        this.id = entity.getId();
+        this.name = entity.getName();
+        this.cpf = entity.getCpf();
+        this.income = entity.getIncome();
+        this.birthDate = entity.getBithDate();
+        this.children = entity.getChildren();
     }
 
     public Long getId() {

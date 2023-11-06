@@ -3,9 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>Formulario de Clientes</title>
+    <title>Formulário de Clientes</title>
 </head>
 <body>
+<header>
+    <!-- Menu de navegação -->
+    <nav>
+        <ul class="menu">
+            <img src="img/logo.jpg" alt="Logo da Empresa" width="150" height="55" class="logo">
+            <li><a href="#inicio">INÍCIO</a></li>
+            <li><a href="#quem-somos">QUEM SOMOS</a></li>
+            <li><a href="#produtos">PRODUTOS</a></li>
+            <li><a href="#contate-nos">CONTATE-NOS</a></li>
+        </ul>
+    </nav>
+</header>
+
 <h1 class="highlight">Cadastro de Cliente</h1>
 <form action="/salvar" method="POST">
     <!-- Campo de ID oculto -->
@@ -30,9 +43,8 @@
     <input type="text" id="children" name="children">
     <br>
 
-    <input type="submit" value="salvar">
-
+    <input type="submit" value="Salvar">
 </form>
-
 </body>
 </html>
+
