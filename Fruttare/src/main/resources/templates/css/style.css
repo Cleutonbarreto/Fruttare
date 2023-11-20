@@ -5,6 +5,7 @@ ul.menu {
     background-color: #eaeaed;
     display: flex;
     justify-content: space-between; /* Para alinhar os itens do menu à direita */
+    align-itens:center;
 }
 
 ul.menu li {

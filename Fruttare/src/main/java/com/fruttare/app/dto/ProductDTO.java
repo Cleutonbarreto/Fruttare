@@ -2,7 +2,6 @@ package com.fruttare.app.dto;
 
 import com.fruttare.app.entities.Category;
 import com.fruttare.app.entities.Product;
-import jakarta.persistence.Column;
 
 import java.io.Serializable;
 import java.time.Instant;

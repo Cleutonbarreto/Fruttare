@@ -1,6 +1,9 @@
 package com.fruttare.app.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -14,23 +17,43 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String cpf;
-    private Double income;
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Instant birthDate;
-    private Integer children;
 
-    public Client(){
+    @NotBlank(message = "Nome é obrigatório")
+    private String name;
+
+    @NotBlank(message = "CPF é obrigatório")
+    private String cpf;
+
+    @NotBlank(message = "Endereço é obrigatório")
+    private String address;
+
+    @NotBlank(message = "Telefone é obrigatório")
+    private String phone;
+
+    @NotBlank(message = "CEP é obrigatório")
+    private String cep;
+
+    @NotBlank(message = "Cidade é obrigatória")
+    private String city;
+
+    @NotBlank(message = "Estado é obrigatório")
+    private String state;
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant registrationDate;
+
+    public Client() {
+        this.registrationDate = Instant.now();
     }
 
-    public Client(Long id, String name, String cpf, Double income, Instant bithDate, Integer children) {
+    public Client(Long id, String name, String cpf, String address, String phone, String cep) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
-        this.income = income;
-        this.birthDate = bithDate;
-        this.children = children;
+        this.address = address;
+        this.phone = phone;
+        this.cep = cep;
+        this.registrationDate = Instant.now();
     }
 
     public Long getId() {
@@ -57,28 +80,52 @@ public class Client implements Serializable {
         this.cpf = cpf;
     }
 
-    public Double getIncome() {
-        return income;
+    public String getaddress() {
+        return address;
     }
 
-    public void setIncome(Double income) {
-        this.income = income;
+    public void setaddress(String address) {
+        this.address = address;
     }
 
-    public Instant getBithDate() {
-        return birthDate;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setBithDate(Instant bithDate) {
-        this.birthDate = bithDate;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public Integer getChildren() {
-        return children;
+    public String getcep() {
+        return cep;
     }
 
-    public void setChildren(Integer children) {
-        this.children = children;
+    public void setcep(String cep) {
+        this.cep = cep;
+    }
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    // Getter e Setter para o campo 'state'
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public Instant getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(Instant registrationDate) {
+        this.registrationDate = registrationDate;
     }
 
     @Override

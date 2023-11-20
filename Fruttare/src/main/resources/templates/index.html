@@ -9,8 +9,8 @@
 <header>
     <!-- Menu de navegação -->
     <nav>
+        <img src="img/logo.jpg" alt="Logo da Empresa" width="150" height="55" class="logo">
         <ul class="menu">
-            <img src="img/logo.jpg" alt="Logo da Empresa" width="150" height="55" class="logo">
             <li><a href="#inicio">INÍCIO</a></li>
             <li><a href="#quem-somos">QUEM SOMOS</a></li>
             <li><a href="#produtos">PRODUTOS</a></li>
@@ -20,7 +20,7 @@
 </header>
 
 <h1 class="highlight">Cadastro de Cliente</h1>
-<form action="/salvar" method="POST">
+<form action="/clients" method="POST">
     <!-- Campo de ID oculto -->
     <input type="hidden" id="id" name="id">
     <label for="name">Nome</label>
@@ -35,8 +35,8 @@
     <input type="text" id="income" name="income">
     <br>
 
-    <label for="birthDate">Aniversário</label>
-    <input type="text" id="birthDate" name="birthDate">
+    <label for="phone">Telefone</label>
+    <input type="text" id="phone" name="phone">
     <br>
 
     <label for="children">Quantidade de Filhos</label>

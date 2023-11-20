@@ -3,40 +3,37 @@ package com.fruttare.app.dto;
 import com.fruttare.app.entities.Client;
 
 import java.io.Serializable;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ClientDTO implements Serializable {
     private static final long serialVersionID = 1L;
     private Long id;
     private String name;
     private String cpf;
-    private Double income;
-    private Instant birthDate;
-    private Integer children;
-
-//    private List<ClientDTO> client = new ArrayList<>();
+    private String address;
+    private String phone;
+    private String cep;
+    private String city;
+    private String state;
 
     public ClientDTO(){
     }
 
-    public ClientDTO(Long id, String name, String cpf, Double income, Instant birthDate, Integer children) {
+    public ClientDTO(Long id, String name, String cpf, String address, String phone, String cep) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
-        this.income = income;
-        this.birthDate = birthDate;
-        this.children = children;
+        this.address = address;
+        this.phone = phone;
+        this.cep = cep;
     }
 
     public ClientDTO(Client entity) {
         this.id = entity.getId();
         this.name = entity.getName();
         this.cpf = entity.getCpf();
-        this.income = entity.getIncome();
-        this.birthDate = entity.getBithDate();
-        this.children = entity.getChildren();
+        this.address = entity.getaddress();
+        this.phone = entity.getPhone();
+        this.cep = entity.getcep();
     }
 
     public Long getId() {
@@ -63,27 +60,43 @@ public class ClientDTO implements Serializable {
         this.cpf = cpf;
     }
 
-    public Double getIncome() {
-        return income;
+    public String getaddress() {
+        return address;
     }
 
-    public void setIncome(Double income) {
-        this.income = income;
+    public void setaddress(String address) {
+        this.address = address;
     }
 
-    public Instant getBirthDate() {
-        return birthDate;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setBirthDate(Instant birthDate) {
-        this.birthDate = birthDate;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public Integer getChildren() {
-        return children;
+    public String getcep() {
+        return cep;
     }
 
-    public void setChildren(Integer children) {
-        this.children = children;
+    public void setcep(String cep) {
+        this.cep = cep;
+    }
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    // Getter e Setter para o campo 'state'
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
