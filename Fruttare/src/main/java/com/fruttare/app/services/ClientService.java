@@ -4,6 +4,7 @@ import com.fruttare.app.dto.ClientDTO;
 import com.fruttare.app.entities.Client;
 import com.fruttare.app.repositories.ClientRepository;
 import com.fruttare.app.services.exceptions.ResourceNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,9 +25,11 @@ public class ClientService {
                 clientDTO.getId(),
                 clientDTO.getName(),
                 clientDTO.getCpf(),
-                clientDTO.getaddress(),
+                clientDTO.getAddress(),
                 clientDTO.getPhone(),
-                clientDTO.getcep()
+                clientDTO.getCep(),
+                clientDTO.getCity(),
+                clientDTO.getState()
         );
     repository.save(entity);
     }
@@ -46,13 +49,15 @@ public class ClientService {
     }
 
     @Transactional
-    public ClientDTO insert(ClientDTO dto) {
+    public ClientDTO insert(@Valid ClientDTO dto) {
         Client entity = new Client();
         entity.setName(dto.getName());
         entity.setCpf(dto.getCpf());
-        entity.setaddress(dto.getaddress());
+        entity.setAddress(dto.getAddress());
         entity.setPhone(dto.getPhone());
-        entity.setcep(dto.getcep());
+        entity.setCep(dto.getCep());
+        entity.setCity(dto.getCity());
+        entity.setState(dto.getState());
         entity = repository.save(entity);
         return new ClientDTO(entity);
     }

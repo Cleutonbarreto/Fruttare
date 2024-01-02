@@ -1,4 +1,4 @@
-package com.fruttare.app.resources.exceptions;
+package com.fruttare.app.controller.exceptions;
 
 import com.fruttare.app.services.exceptions.DatabaseException;
 import com.fruttare.app.services.exceptions.ResourceNotFoundException;

@@ -1,9 +1,12 @@
 package com.fruttare.app.entities;
 
+import com.fruttare.app.services.exceptions.RequiredFieldsException;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 import java.time.Instant;
@@ -21,7 +24,11 @@ public class Client implements Serializable {
     @NotBlank(message = "Nome é obrigatório")
     private String name;
 
+
     @NotBlank(message = "CPF é obrigatório")
+    @Column (unique = true)
+//    @CPF
+    @Pattern(regexp = "\\d{11}", message = "CPF deve conter exatamente 11 dígitos numéricos")
     private String cpf;
 
     @NotBlank(message = "Endereço é obrigatório")
@@ -46,14 +53,16 @@ public class Client implements Serializable {
         this.registrationDate = Instant.now();
     }
 
-    public Client(Long id, String name, String cpf, String address, String phone, String cep) {
+    public Client(Long id, String name, String cpf, String address, String phone, String cep, String city, String state) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.address = address;
         this.phone = phone;
         this.cep = cep;
-        this.registrationDate = Instant.now();
+        this.city = city;
+        this.state = state;
+
     }
 
     public Long getId() {
@@ -80,11 +89,11 @@ public class Client implements Serializable {
         this.cpf = cpf;
     }
 
-    public String getaddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setaddress(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
@@ -96,13 +105,14 @@ public class Client implements Serializable {
         this.phone = phone;
     }
 
-    public String getcep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setcep(String cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
+
     public String getCity() {
         return city;
     }
@@ -111,7 +121,6 @@ public class Client implements Serializable {
         this.city = city;
     }
 
-    // Getter e Setter para o campo 'state'
     public String getState() {
         return state;
     }
@@ -128,16 +137,24 @@ public class Client implements Serializable {
         this.registrationDate = registrationDate;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return Objects.equals(id, client.id);
+        return Objects.equals(id, client.id) &&
+               Objects.equals(cpf, client.cpf);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(id, cpf);
     }
+
+//    public void validateFieldsRequired() {
+//        if (name == null || cpf == null || address == null || phone == null || cep == null || city == null || state == null) {
+//            throw new RequiredFieldsException("Campos obrigatórios não preenchidos.");
+//        }
+//    }
 }

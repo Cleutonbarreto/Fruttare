@@ -1,4 +1,4 @@
-package com.fruttare.app.resources.exceptions;
+package com.fruttare.app.controller.exceptions;
 
 import java.io.Serializable;
 import java.time.Instant;

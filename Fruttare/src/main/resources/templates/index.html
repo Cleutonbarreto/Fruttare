@@ -1,28 +1,128 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <style>
+        /* Estilize o menu */
+ul.menu {
+    list-style-type: none;
+    padding: 0;
+    background-color: #eaeaed;
+    display: flex;
+    justify-content: space-between; /* Para alinhar os itens do menu à direita */
+    align-itens:center;
+}
+
+ul.menu li {
+    margin-right: 20px;
+}
+
+ul.menu li a {
+    text-decoration: none;
+    color: #c42e0f;
+    padding: 5px 10px; /* Espaçamento interno para os links */
+    border-radius: 5px; /* Borda arredondada para os links */
+}
+
+ul.menu li a:hover {
+    background-color: #555; /* Cor de fundo quando o mouse passa sobre os links */
+}
+
+/* Estilize o logo */
+.logo {
+    display: inline-block;
+    margin: 10px;
+}
+
+/* Estilizando o corpo da página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #eaeaed; /* Fundo cinza claro */
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilizando o cabeçalho */
+h1 {
+  text-align: center;
+  background-color: #fff; /* Laranja */
+  color: #eaeaed; /* Texto branco */
+  padding: 10px;
+}
+
+/* Estilizando o formulário */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #eaeaed; /* Fundo cinza claro */
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilizando as etiquetas de rótulo */
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #c42e0f; /* Vermelho escuro */
+}
+
+/* Estilizando os campos de entrada de texto */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #86832a; /* Amarelo verde-oliva */
+  border-radius: 3px;
+}
+
+/* Estilizando o botão de envio */
+input[type="submit"] {
+  background-color: #f66b05; /* Laranja */
+  color: #eaeaed; /* Texto branco */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+input[type="submit"]:hover {
+  background-color: #c42e0f; /* Vermelho escuro */
+}
+
+/* Estilizando elementos em destaque com a cor verde */
+.highlight {
+  color: #006600; /* Verde das folhas */
+}
+
+
+    </style>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Formulário de Clientes</title>
 </head>
 <body>
-<header>
-    <!-- Menu de navegação -->
-    <nav>
-        <img src="img/logo.jpg" alt="Logo da Empresa" width="150" height="55" class="logo">
-        <ul class="menu">
-            <li><a href="#inicio">INÍCIO</a></li>
-            <li><a href="#quem-somos">QUEM SOMOS</a></li>
-            <li><a href="#produtos">PRODUTOS</a></li>
-            <li><a href="#contate-nos">CONTATE-NOS</a></li>
-        </ul>
-    </nav>
-</header>
+<!--<header>-->
+<!--    &lt;!&ndash; Menu de navegação &ndash;&gt;-->
+<!--    <nav>-->
+<!--        <img src="img/logo.jpg" alt="Logo da Empresa" width="150" height="55" class="logo">-->
+<!--        <ul class="menu">-->
+<!--            <li><a href="#inicio">INÍCIO</a></li>-->
+<!--            <li><a href="#quem-somos">QUEM SOMOS</a></li>-->
+<!--            <li><a href="#produtos">PRODUTOS</a></li>-->
+<!--            <li><a href="#contate-nos">CONTATE-NOS</a></li>-->
+<!--        </ul>-->
+<!--    </nav>-->
+<!--</header>-->
 
 <h1 class="highlight">Cadastro de Cliente</h1>
 <form action="/clients" method="POST">
     <!-- Campo de ID oculto -->
     <input type="hidden" id="id" name="id">
+
     <label for="name">Nome</label>
     <input type="text" id="name" name="name">
     <br>
@@ -31,20 +131,76 @@
     <input type="text" id="cpf" name="cpf">
     <br>
 
-    <label for="income">Renda</label>
-    <input type="text" id="income" name="income">
+    <label for="address">Endereço</label>
+    <input type="text" id="address" name="address">
     <br>
 
     <label for="phone">Telefone</label>
     <input type="text" id="phone" name="phone">
     <br>
 
-    <label for="children">Quantidade de Filhos</label>
-    <input type="text" id="children" name="children">
+    <label for="cep">CEP</label>
+    <input type="text" id="cep" name="cep">
     <br>
 
-    <input type="submit" value="Salvar">
+    <label for="city">Cidade</label>
+    <input type="text" id="city" name="city">
+    <br>
+
+    <label for="state">Estado</label>
+    <select id="state" name="state">
+        <option value="">Selecione...</option>
+        <option value="AC">AC</option>
+        <option value="AL">AL</option>
+        <option value="AP">AP</option>
+        <option value="AM">AM</option>
+        <option value="BA">BA</option>
+        <option value="CE">CE</option>
+        <option value="DF">DF</option>
+        <option value="ES">ES</option>
+        <option value="GO">GO</option>
+        <option value="MA">MA</option>
+        <option value="MT">MT</option>
+        <option value="MS">MS</option>
+        <option value="MG">MG</option>
+        <option value="PA">PA</option>
+        <option value="PB">PB</option>
+        <option value="PR">PR</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="RJ">RJ</option>
+        <option value="RN">RN</option>
+        <option value="RS">RS</option>
+        <option value="RO">RO</option>
+        <option value="RR">RR</option>
+        <option value="SC">SC</option>
+        <option value="SP">SP</option>
+        <option value="SE">SE</option>
+        <option value="TO">TO</option>
+
+        <br>
+
+        <input type="submit" value="Salvar">
 </form>
+<div th:if="${mensagem != null}" class="mensagem-sucesso">
+    <p th:text="${mensagem}"></p>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#cpf').mask('000.000.000-00', {reverse: true});
+
+            $('form').submit(function() {
+        var cpfValue = $('#cpf').cleanVal(); // Obtém o valor sem a máscara
+        $('#cpf').val(cpfValue); // Atualiza o campo com o valor sem a máscara
+    });
+
+        $('#cep').mask('00000-000');
+
+        $('#phone').mask('(00) 00000-0000');
+
+        $('#uf').mask('00')
+    });
+
+</script>
 </body>
 </html>
-

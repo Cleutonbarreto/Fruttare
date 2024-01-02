@@ -18,22 +18,27 @@ public class ClientDTO implements Serializable {
     public ClientDTO(){
     }
 
-    public ClientDTO(Long id, String name, String cpf, String address, String phone, String cep) {
+    public ClientDTO(Long id, String name, String cpf, String address, String phone, String cep, String city, String state) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;
         this.address = address;
         this.phone = phone;
         this.cep = cep;
+        this.city = city;
+        this.state = state;
     }
 
     public ClientDTO(Client entity) {
         this.id = entity.getId();
         this.name = entity.getName();
         this.cpf = entity.getCpf();
-        this.address = entity.getaddress();
+        this.address = entity.getAddress();
         this.phone = entity.getPhone();
-        this.cep = entity.getcep();
+        this.cep = entity.getCep();
+        this.city = entity.getCity();
+        this.state = entity.getState();
+
     }
 
     public Long getId() {
@@ -60,11 +65,11 @@ public class ClientDTO implements Serializable {
         this.cpf = cpf;
     }
 
-    public String getaddress() {
+    public String getAddress() {
         return address;
     }
 
-    public void setaddress(String address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
@@ -76,11 +81,11 @@ public class ClientDTO implements Serializable {
         this.phone = phone;
     }
 
-    public String getcep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setcep(String cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
     public String getCity() {

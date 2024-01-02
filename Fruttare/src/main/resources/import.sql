@@ -56,7 +56,7 @@ INSERT INTO tb_product_category (product_id, category_id) VALUES (24, 3);
 INSERT INTO tb_product_category (product_id, category_id) VALUES (25, 3);
 
 INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('João Silva', '123.456.789-01', 'Rua da Amizade, 123', '(11) 98765-4321', '12345-678', 'São Paulo', 'SP', CURRENT_TIMESTAMP);
-INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('Maria Oliveira', '987.654.321-09', 'Avenida dos Sonhos, 456', '(21) 98765-4321', '54321-987', 'Rio de Janeiro', 'RJ', CURRENT_TIMESTAMP);
+INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('Maria Oliveira', '985.654.321-09', 'Avenida dos Sonhos, 456', '(21) 98765-4321', '54321-987', 'Rio de Janeiro', 'RJ', CURRENT_TIMESTAMP);
 INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('Carlos Santos', '234.567.890-12', 'Travessa das Flores, 789', '(31) 98765-4321', '98765-432', 'Belo Horizonte', 'MG', CURRENT_TIMESTAMP);
 INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('Fernanda Costa', '876.543.210-98', 'Praça da Liberdade, 101', '(51) 98765-4321', '56789-012', 'Porto Alegre', 'RS', CURRENT_TIMESTAMP);
 INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('Ricardo Pereira', '345.678.901-23', 'Alameda dos Ipês, 567', '(41) 98765-4321', '21098-765', 'Curitiba', 'PR', CURRENT_TIMESTAMP);
@@ -64,7 +64,7 @@ INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration
 INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('Pedro Lima', '210.987.654-34', 'Avenida do Sol, 1122', '(71) 98765-4321', '43210-987', 'Salvador', 'BA', CURRENT_TIMESTAMP);
 INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('Lúcia Santos', '987.654.321-09', 'Rua das Estrelas, 333', '(81) 98765-4321', '87654-321', 'Recife', 'PE', CURRENT_TIMESTAMP);
 INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('Roberto Pereira', '456.789.012-34', 'Alameda das Rosas, 555', '(91) 98765-4321', '54321-098', 'Belém', 'PA', CURRENT_TIMESTAMP);
-INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('Marina Oliveira', '123.456.789-01', 'Avenida das Águas, 777', '(85) 98765-4321', '12345-678', 'Fortaleza', 'CE', CURRENT_TIMESTAMP);
+INSERT INTO tb_client (name, cpf, address, phone, cep, city, state, registration_date) VALUES ('Marina Oliveira', '123.456.789-06', 'Avenida das Águas, 777', '(85) 98765-4321', '12345-678', 'Fortaleza', 'CE', CURRENT_TIMESTAMP);
 
 
 
