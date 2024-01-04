@@ -1,16 +1,16 @@
 package com.fruttare.app.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-
-public class OrderedItem {
+@Table (name = "tb_order_item")
+public class OrderItem {
 
     @Id
     private Long id;
@@ -20,27 +20,27 @@ public class OrderedItem {
     @JoinColumn(name = "id_product", referencedColumnName = "id")
     private Product product;
 
-    @NotNull
+    @NotBlank
     @ManyToOne
     @JoinColumn(name = "id_SalesOrder", referencedColumnName = "id")
     private SalesOrder salesOrder;
 
-    private Double amount;
+    private Double quantity;
 
-    private Double unitPrice;
+    private BigDecimal unitPrice;
 
-    private Double discount;
+    private BigDecimal discount;
 
-    private Double totalItems;
+    private BigDecimal totalItems;
 
-    public OrderedItem (){
+    public OrderItem(){
     }
 
-    public OrderedItem(Long id, @NotNull Product product, @NotNull SalesOrder salesOrder, Double amount, Double unitPrice, Double discount, Double totalItems) {
+    public OrderItem(Long id, @NotBlank Product product, @NotBlank SalesOrder salesOrder, Double quantity, BigDecimal unitPrice, BigDecimal discount, BigDecimal totalItems) {
         this.id = id;
         this.product = product;
         this.salesOrder = salesOrder;
-        this.amount = amount;
+        this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.discount = discount;
         this.totalItems = totalItems;
@@ -71,34 +71,34 @@ public class OrderedItem {
     }
 
     public Double getAmount() {
-        return amount;
+        return quantity;
     }
 
     public void setAmount(Double amount) {
-        this.amount = amount;
+        this.quantity = amount;
     }
 
-    public Double getUnitPrice() {
+    public BigDecimal getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(Double unitPrice) {
+    public void setUnitPrice(BigDecimal unitPrice) {
         this.unitPrice = unitPrice;
     }
 
-    public Double getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(Double discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 
-    public Double getTotalItems() {
+    public BigDecimal getTotalItems() {
         return totalItems;
     }
 
-    public void setTotalItems(Double totalItems) {
+    public void setTotalItems(BigDecimal totalItems) {
         this.totalItems = totalItems;
     }
 
@@ -106,7 +106,7 @@ public class OrderedItem {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderedItem that = (OrderedItem) o;
+        OrderItem that = (OrderItem) o;
         return Objects.equals(id, that.id);
     }
 

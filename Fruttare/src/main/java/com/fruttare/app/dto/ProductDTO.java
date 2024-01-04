@@ -4,6 +4,7 @@ import com.fruttare.app.entities.Category;
 import com.fruttare.app.entities.Product;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +15,7 @@ public class ProductDTO implements Serializable {
     private Long id;
     private String name;
     private String description;
-    private Double price;
+    private BigDecimal price;
     private String imgUrl;
     private Instant date;
 
@@ -23,7 +24,7 @@ public class ProductDTO implements Serializable {
     public ProductDTO(){
     }
 
-    public ProductDTO(Long id, String name, String description, Double price, String imgUrl, Instant date) {
+    public ProductDTO(Long id, String name, String description, BigDecimal price, String imgUrl, Instant date) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -69,11 +70,11 @@ public class ProductDTO implements Serializable {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

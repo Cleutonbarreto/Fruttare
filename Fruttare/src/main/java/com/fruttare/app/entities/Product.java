@@ -2,8 +2,10 @@ package com.fruttare.app.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Objects;
@@ -17,11 +19,13 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotBlank
     private String name;
 
     @Column(columnDefinition = "TEXT")
+    @NotBlank
     private String description;
-    private Double price;
+    private BigDecimal price;
     private  String imgUrl;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
@@ -36,9 +40,10 @@ public class Product implements Serializable {
     Set<Category> categories = new HashSet<>();
 
     public Product() {
+        this.categories = new HashSet<>();
     }
 
-    public Product(Long id, String name, String description, Double price, String imgUrl, Instant date) {
+    public Product(Long id, String name, String description, BigDecimal price, String imgUrl, Instant date) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -71,11 +76,11 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

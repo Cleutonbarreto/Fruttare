@@ -2,22 +2,37 @@ package com.fruttare.app.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class SalesOrder {
+@Table (name = "tb_sales_order")
+public class SalesOrder implements Serializable {
+    private static final long serialVersionID = 1L;
+
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn (name = "id_client", referencedColumnName  = "id")
+    @JoinColumn(name = "client_id", referencedColumnName = "id")
     private Client client;
+
+    @OneToMany(mappedBy = "salesOrder", cascade = CascadeType.ALL)
+    private List<OrderItem> items = new ArrayList<>();
+
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    private Instant orderDate;
+
+
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant dateOfIssue;
 
-    @Column (columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant deliveryDate;
 
     private Double totalOrder;
@@ -26,6 +41,7 @@ public class SalesOrder {
     private OrderStatus status = OrderStatus.RASCUNHO;
 
     public SalesOrder() {
+        this.orderDate = Instant.now();
     }
 
     public SalesOrder(Long id, Client client, Instant dateOfIssue, Instant deliveryDate, Double totalOrder, OrderStatus status) {

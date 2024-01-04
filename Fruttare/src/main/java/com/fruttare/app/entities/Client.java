@@ -26,7 +26,7 @@ public class Client implements Serializable {
 
 
     @NotBlank(message = "CPF é obrigatório")
-    @Column (unique = true)
+    @Column(unique = true)
 //    @CPF
     @Pattern(regexp = "\\d{11}", message = "CPF deve conter exatamente 11 dígitos numéricos")
     private String cpf;
@@ -62,7 +62,6 @@ public class Client implements Serializable {
         this.cep = cep;
         this.city = city;
         this.state = state;
-
     }
 
     public Long getId() {
@@ -144,7 +143,7 @@ public class Client implements Serializable {
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
         return Objects.equals(id, client.id) &&
-               Objects.equals(cpf, client.cpf);
+                Objects.equals(cpf, client.cpf);
     }
 
     @Override
@@ -152,9 +151,4 @@ public class Client implements Serializable {
         return Objects.hash(id, cpf);
     }
 
-//    public void validateFieldsRequired() {
-//        if (name == null || cpf == null || address == null || phone == null || cep == null || city == null || state == null) {
-//            throw new RequiredFieldsException("Campos obrigatórios não preenchidos.");
-//        }
-//    }
 }
