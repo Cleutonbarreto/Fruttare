@@ -37,32 +37,42 @@ public ModelAndView index(){
         return ResponseEntity.ok().body(dto);
     }
 
-/*    @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public ResponseEntity<ClientDTO> insert(@ModelAttribute ClientDTO dto) {
-        dto = service.insert(dto);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(dto.getId()).toUri();
-        return ResponseEntity.ok().body(dto);
-    }*/
+
+//    @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+//    public ModelAndView insert(@ModelAttribute @Valid ClientDTO dto, BindingResult bindingResult) {
+//        if(bindingResult.hasErrors()){
+//            ModelAndView modelAndView = new ModelAndView("index");
+//            modelAndView.addObject("mensagem", "Erro no preenchimento do formulário");
+//                    return modelAndView;
+//        }
+//        dto = service.insert(dto);
+//
+//        ModelAndView modelAndView = new ModelAndView("redirect:/");
+//        modelAndView.addObject("mensagem", "Cadastro salvo com sucesso!");
+//
+//        return modelAndView;
+//    }
 
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ModelAndView insert(@ModelAttribute @Valid ClientDTO dto, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
-            ModelAndView modelAndView = new ModelAndView("index");
-            modelAndView.addObject("mensagem", "Erro no preenchimento do formulário");
-                    return modelAndView;
-        }
-        dto = service.insert(dto);
+        ModelAndView modelAndView = new ModelAndView("index");
 
-        ModelAndView modelAndView = new ModelAndView("redirect:/clients/");
-        modelAndView.addObject("mensagem", "Cadastro salvo com sucesso!");
+        if (bindingResult.hasErrors()) {
+            modelAndView.addObject("mensagem", "Erro no preenchimento do formulário");
+        } else {
+            dto = service.insert(dto);
+            modelAndView.addObject("mensagem", "Cadastro salvo com sucesso!");
+            modelAndView.addObject("novoCliente", new ClientDTO());
+        }
 
         return modelAndView;
     }
 
     @RequestMapping("/")
     public ModelAndView index() {
-        return new ModelAndView("index");
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("novoCliente", new ClientDTO());
+        return modelAndView;
     }
 
 
