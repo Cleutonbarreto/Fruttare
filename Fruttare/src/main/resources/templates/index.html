@@ -101,25 +101,12 @@ input[type="submit"]:hover {
 
 
     </style>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
     <title>Formulário de Clientes</title>
 </head>
 <body>
-<!--<header>-->
-<!--    &lt;!&ndash; Menu de navegação &ndash;&gt;-->
-<!--    <nav>-->
-<!--        <img src="img/logo.jpg" alt="Logo da Empresa" width="150" height="55" class="logo">-->
-<!--        <ul class="menu">-->
-<!--            <li><a href="#inicio">INÍCIO</a></li>-->
-<!--            <li><a href="#quem-somos">QUEM SOMOS</a></li>-->
-<!--            <li><a href="#produtos">PRODUTOS</a></li>-->
-<!--            <li><a href="#contate-nos">CONTATE-NOS</a></li>-->
-<!--        </ul>-->
-<!--    </nav>-->
-<!--</header>-->
-
 <h1 class="highlight">Cadastro de Cliente</h1>
-<form action="/clients" method="POST">
+<form action="/templates/static" method="POST">
     <!-- Campo de ID oculto -->
     <input type="hidden" id="id" name="id">
 
@@ -178,29 +165,11 @@ input[type="submit"]:hover {
         <option value="SE">SE</option>
         <option value="TO">TO</option>
 
-        <br>
-
         <input type="submit" value="Salvar">
 </form>
 <div th:if="${mensagem != null}" class="mensagem-sucesso">
     <p th:text="${mensagem}"></p>
 </div>
-<script>
-    $(document).ready(function() {
-        $('#cpf').mask('000.000.000-00', {reverse: true});
 
-            $('form').submit(function() {
-        var cpfValue = $('#cpf').cleanVal(); // Obtém o valor sem a máscara
-        $('#cpf').val(cpfValue); // Atualiza o campo com o valor sem a máscara
-    });
-
-        $('#cep').mask('00000-000');
-
-        $('#phone').mask('(00) 00000-0000');
-
-        $('#uf').mask('00')
-    });
-
-</script>
 </body>
 </html>
