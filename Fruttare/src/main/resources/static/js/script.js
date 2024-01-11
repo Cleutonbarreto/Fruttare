@@ -1,21 +1,51 @@
-//        function iniciarNovoCadastro() {
-//              document.getElementById('myForm').reset();
-//              document.querySelector('.mensagem-sucesso p').innerText = '';
-//              document.getElementById('name').focus();
-//        }
+document.addEventListener("DOMContentLoaded", function () {
+    const linkColor = document.querySelectorAll(".nav_link");
 
-        $(document).ready(function() {
-        $('#cpf').mask('000.000.000-00', {reverse: true});
+    function colorLink() {
+        if (linkColor) {
+            linkColor.forEach((l) => l.classList.remove("active"));
+            this.classList.add("active");
 
-        $('form').submit(function() {
-        var cpfValue = $('#cpf').cleanVal(); // Obtém o valor sem a máscara
-        $('#cpf').val(cpfValue); // Atualiza o campo com o valor sem a máscara
+            // Extract section ID from href attribute and show the corresponding section
+            const sectionId = this.getAttribute("href").substring(1);
+            showSection(sectionId);
+        }
+    }
+
+    linkColor.forEach((l) => l.addEventListener("click", colorLink));
+
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll(".section");
+        sections.forEach((section) => {
+            section.classList.remove("active-section");
         });
 
-        $('#cep').mask('00000-000');
+        const activeSection = document.getElementById(sectionId);
+        if (activeSection) {
+            activeSection.classList.add("active-section");
+        }
+    }
 
-        $('#phone').mask('(00) 00000-0000');
+    const showNavbar = (toggleId, navId, bodyId, headerId) => {
+        const toggle = document.getElementById(toggleId),
+            nav = document.getElementById(navId),
+            bodypd = document.getElementById(bodyId),
+            headerpd = document.getElementById(headerId);
 
-        $('#uf').mask('00')
-    });
+        // Validate that all variables exist
+        if (toggle && nav && bodypd && headerpd) {
+            toggle.addEventListener("click", () => {
+                // show navbar
+                nav.classList.toggle("show");
+                // change icon
+                toggle.classList.toggle("bx-x");
+                // add padding to body
+                bodypd.classList.toggle("body-pd");
+                // add padding to header
+                headerpd.classList.toggle("body-pd");
+            });
+        }
+    };
 
+    showNavbar("header-toggle", "nav-bar", "body-pd", "header");
+});

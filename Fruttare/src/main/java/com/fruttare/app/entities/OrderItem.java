@@ -1,18 +1,20 @@
 package com.fruttare.app.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-@Table (name = "tb_order_item")
-public class OrderItem {
+@Table(name = "tb_order_item")
+public class OrderItem implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
@@ -20,7 +22,7 @@ public class OrderItem {
     @JoinColumn(name = "id_product", referencedColumnName = "id")
     private Product product;
 
-    @NotBlank
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "id_SalesOrder", referencedColumnName = "id")
     private SalesOrder salesOrder;
@@ -33,10 +35,10 @@ public class OrderItem {
 
     private BigDecimal totalItems;
 
-    public OrderItem(){
+    public OrderItem() {
     }
 
-    public OrderItem(Long id, @NotBlank Product product, @NotBlank SalesOrder salesOrder, Double quantity, BigDecimal unitPrice, BigDecimal discount, BigDecimal totalItems) {
+    public OrderItem(Long id, Product product, SalesOrder salesOrder, Double quantity, BigDecimal unitPrice, BigDecimal discount, BigDecimal totalItems) {
         this.id = id;
         this.product = product;
         this.salesOrder = salesOrder;
@@ -70,11 +72,11 @@ public class OrderItem {
         this.salesOrder = salesOrder;
     }
 
-    public Double getAmount() {
+    public Double getQuantity() {
         return quantity;
     }
 
-    public void setAmount(Double amount) {
+    public void setQuantity(Double amount) {
         this.quantity = amount;
     }
 

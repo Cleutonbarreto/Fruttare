@@ -37,22 +37,6 @@ public ModelAndView index(){
         return ResponseEntity.ok().body(dto);
     }
 
-
-//    @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-//    public ModelAndView insert(@ModelAttribute @Valid ClientDTO dto, BindingResult bindingResult) {
-//        if(bindingResult.hasErrors()){
-//            ModelAndView modelAndView = new ModelAndView("index");
-//            modelAndView.addObject("mensagem", "Erro no preenchimento do formulário");
-//                    return modelAndView;
-//        }
-//        dto = service.insert(dto);
-//
-//        ModelAndView modelAndView = new ModelAndView("redirect:/");
-//        modelAndView.addObject("mensagem", "Cadastro salvo com sucesso!");
-//
-//        return modelAndView;
-//    }
-
     @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public ModelAndView insert(@ModelAttribute @Valid ClientDTO dto, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView("index");
@@ -74,6 +58,15 @@ public ModelAndView index(){
         modelAndView.addObject("novoCliente", new ClientDTO());
         return modelAndView;
     }
+
+        @GetMapping(value = "/section4")
+        public ModelAndView showSection4() {
+            ModelAndView modelAndView = new ModelAndView("index");
+            List<ClientDTO> clientList = service.findAll();
+            modelAndView.addObject("clients", clientList);
+            return modelAndView;
+        }
+
 
 
 }

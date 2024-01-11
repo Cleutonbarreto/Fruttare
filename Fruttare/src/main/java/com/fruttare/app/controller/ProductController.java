@@ -8,8 +8,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/products")
@@ -54,5 +56,16 @@ public class ProductController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/section3")
+    public ModelAndView showSection3() {
+        System.out.println("AQUI INICIA");
+        ModelAndView modelAndView = new ModelAndView("index");
+        List<ProductDTO> productList = service.findAll();
+        System.out.println("AQUI MEIO");
+        modelAndView.addObject("products", productList);
+        System.out.println("AQUI FIM");
+        return modelAndView;
     }
 }

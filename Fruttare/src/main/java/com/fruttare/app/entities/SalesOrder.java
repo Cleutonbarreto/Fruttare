@@ -1,8 +1,10 @@
 package com.fruttare.app.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +13,7 @@ import java.util.Objects;
 @Entity
 @Table (name = "tb_sales_order")
 public class SalesOrder implements Serializable {
-    private static final long serialVersionID = 1L;
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
@@ -24,27 +26,31 @@ public class SalesOrder implements Serializable {
     @OneToMany(mappedBy = "salesOrder", cascade = CascadeType.ALL)
     private List<OrderItem> items = new ArrayList<>();
 
+    @NotNull
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant orderDate;
 
 
-
+    @NotNull
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant dateOfIssue;
 
+    @NotNull
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant deliveryDate;
 
-    private Double totalOrder;
+    @NotNull
+    private BigDecimal totalOrder;
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus status = OrderStatus.RASCUNHO;
+    private OrderStatus status = OrderStatus.FECHADO;
 
     public SalesOrder() {
         this.orderDate = Instant.now();
     }
 
-    public SalesOrder(Long id, Client client, Instant dateOfIssue, Instant deliveryDate, Double totalOrder, OrderStatus status) {
+
+    public SalesOrder(Long id, Client client, Instant dateOfIssue, Instant deliveryDate, BigDecimal totalOrder, OrderStatus status) {
         this.id = id;
         this.client = client;
         this.dateOfIssue = dateOfIssue;
@@ -85,11 +91,11 @@ public class SalesOrder implements Serializable {
         this.deliveryDate = deliveryDate;
     }
 
-    public Double getTotalOrder() {
+    public BigDecimal getTotalOrder() {
         return totalOrder;
     }
 
-    public void setTotalOrder(Double totalOrder) {
+    public void setTotalOrder(BigDecimal totalOrder) {
         this.totalOrder = totalOrder;
     }
 
@@ -99,6 +105,15 @@ public class SalesOrder implements Serializable {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+
+    public List<OrderItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
     }
 
     @Override

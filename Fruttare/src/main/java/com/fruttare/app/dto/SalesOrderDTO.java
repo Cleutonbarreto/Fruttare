@@ -5,6 +5,7 @@ import com.fruttare.app.entities.OrderStatus;
 import com.fruttare.app.entities.SalesOrder;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.Instant;
 
 
@@ -16,13 +17,13 @@ public class SalesOrderDTO implements Serializable {
     private Instant orderDate;
     private Instant dateOfIssue;
     private Instant deliveryDate;
-    private Double totalOrder;
+    private BigDecimal totalOrder;
 
 
     public SalesOrderDTO() {
             }
 
-    public SalesOrderDTO(Long id, Client client, Instant dateOfIssue, Instant deliveryDate, Double totalOrder, OrderStatus status) {
+    public SalesOrderDTO(Long id, Client client, Instant dateOfIssue, Instant deliveryDate, BigDecimal totalOrder, OrderStatus status) {
         this.id = id;
         this.client = client;
         this.dateOfIssue = dateOfIssue;
@@ -70,11 +71,11 @@ public class SalesOrderDTO implements Serializable {
         this.deliveryDate = deliveryDate;
     }
 
-    public Double getTotalOrder() {
+    public BigDecimal getTotalOrder() {
         return totalOrder;
     }
 
-    public void setTotalOrder(Double totalOrder) {
+    public void setTotalOrder(BigDecimal totalOrder) {
         this.totalOrder = totalOrder;
     }
 
